@@ -32,6 +32,17 @@ Start the project
 npm run dev
 ```
 
+## Testing
+To execute, the unit and integration tests
+
+```bash
+npm run tests
+```
+To run the End to End test using Cypress (before running this test make sure the server is running locally at port 3000)
+
+```bash
+npm run cypress:open
+```
 ## Some Screenshots
 
 ![Screenshot](./screenshots/Screenshot_5.png)
