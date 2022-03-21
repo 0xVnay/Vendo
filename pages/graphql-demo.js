@@ -28,10 +28,14 @@ const CharactersList = ({ characters }) => {
             </h1>
           </div>
         </section>
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 p-8 md:grid-cols-3 lg:grid-cols-4 ">
+        <div
+          data-testid="characters-container"
+          className="grid grid-cols-2 gap-x-6 gap-y-10 p-8 md:grid-cols-3 lg:grid-cols-4 "
+        >
           {characters.map((character) => (
             <Card
               key={character.id}
+              id={character.id}
               onClick={() => router.push(`/character/${character.id}`)}
               imageUrl={character?.image}
               heading={character.name}

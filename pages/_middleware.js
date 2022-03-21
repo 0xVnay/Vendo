@@ -9,7 +9,12 @@ export async function middleware(req) {
     return NextResponse.next()
   }
 
-  if (!token && pathname !== '/login') {
+  if (
+    !token &&
+    pathname !== '/login' &&
+    !pathname.includes('graphql-demo') &&
+    !pathname.includes('character')
+  ) {
     const url = req.nextUrl.clone()
     url.pathname = '/login'
     return NextResponse.redirect(url.href)

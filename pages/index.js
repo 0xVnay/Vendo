@@ -13,9 +13,12 @@ const Home = () => {
 
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
-      spotifyApi.getUserPlaylists().then((data) => {
-        setPlaylists(data.body.items)
-      })
+      spotifyApi
+        ?.getUserPlaylists()
+        .then((data) => {
+          setPlaylists(data.body.items)
+        })
+        .catch((err) => null)
     }
   }, [session, spotifyApi])
 
@@ -31,7 +34,7 @@ const Home = () => {
             onClick={() => router.push(`/graphql-demo`)}
             className="flex cursor-pointer items-center space-x-3 rounded-full bg-white p-1 pr-2 text-black opacity-90 hover:opacity-80"
           >
-            <h2 className='font-medium'>Go to Graphql Demo</h2>
+            <h2 className="font-medium">Go to Graphql Demo</h2>
           </div>
           <div
             onClick={signOut}
@@ -59,6 +62,7 @@ const Home = () => {
           {playlists.map((playlist) => (
             <Card
               key={playlist.id}
+              id={playlist.id}
               onClick={() => router.push(`/playlist/${playlist.id}`)}
               imageUrl={playlist?.images?.[0]?.url}
               heading={playlist.name}
